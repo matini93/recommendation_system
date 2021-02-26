@@ -1,0 +1,43 @@
+{% load static %}
+<!Doctype html>
+
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <link href="../../static/css/style.css" type="text/css" rel="stylesheet">
+    <link rel = "preconnect"href = "https://fonts.gstatic.com">
+    <link href = "https://fonts.googleapis.com/css2? family = Noto + Sans + KR & display = swap" rel = "stylesheet">
+    <title>무비판</title>
+</head>
+<header>
+  <div class="top">
+    <h1 class="toph1">무비판</h1>
+  </div>
+</header>
+
+<navbar>
+  <div class="navbar-nav">
+    <ul>
+      <li><h4><a href="{% url 'index' %}">홈으로</a></h4></li>
+      <li><h4><a href="{% url 'recommend:worldcup' %}">이상형월드컵</a></h4></li>
+      <li><h4><a href="{% url 'recommend:ratings' %}"  >평점매기기</a></h4></li>
+
+    {% if user.is_authenticated %}
+      <li><h4><a href="{% url 'accounts:logout' %}">{{ user.username }}(로그아웃)</a></h4></li>
+    {% else %}
+      <li><h4><a href="{% url 'accounts:login' %}">로그인</a></h4></li>
+      <li><h4><a href="{% url 'accounts:signup' %}">회원가입</a></h4></li>
+    {% endif %}
+    </ul>
+  </div>
+</navbar>
+
+<body>
+
+<!-- 기본 템플릿 안에 삽입될 내용 Start -->
+{% block content %}
+{% endblock %}
+<!-- 기본 템플릿 안에 삽입될 내용 End -->
+<footer class="bottom">copyright ⓒ 멋쟁이사자처림 final project 무비판</footer>
+</body>
+</html>

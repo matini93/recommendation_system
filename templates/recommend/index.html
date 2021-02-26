@@ -1,0 +1,134 @@
+{% extends "base.html" %}
+
+{% block content %}
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <link href="../../static/css/style.css" type="text/css" rel="stylesheet">
+    <link rel = "preconnect"href = "https://fonts.gstatic.com">
+    <link href = "https://fonts.googleapis.com/css2? family = Noto + Sans + KR & display = swap" rel = "stylesheet">
+</head>
+<body>
+<br>
+  <h2>내가 뽑은 최고의 영화</h2>
+<table class="row">
+    <tr>
+            <td>
+                <a class="row-image" href="{{ best_movie.link }}"><img src="{{ best_movie.poster }}" target='_blank' title="상세정보"></a>
+                <center><p>{{ best_movie.title_ko }}</p></center>
+            </td>
+    </tr>
+</table>
+<br>
+<br>
+{% if worldcup_list %}
+<h2>이상형 월드컵에서 우승을 많이한 영화</h2>
+<table class="row">
+    <tr>
+        <br>
+        {% for movie in worldcup_list %}
+            <td>
+                <a class="row-image" href="{{ movie.link }}"><img src="{{  movie.poster }}" target='_blank' title="상세정보"></a>
+                <center><p>{{ movie.title_ko }}</p></center>
+            </td>
+        {% endfor %}
+    </tr>
+</table>
+<br>
+<br>
+{% endif %}
+
+{% if sim_genre_list %}
+<h2>{{ best_movie.title_ko }} 와 비슷한 장르의 영화</h2>
+<table class="row">
+    <tr>
+        <br>
+        {% for movie in sim_genre_list %}
+            <td>
+                <a class="row-image" href="{{ movie.link }}"><img src="{{  movie.poster }}" target='_blank' title="상세정보"></a>
+                <center><p>{{ movie.title_ko }}</p></center>
+                <!-- <p>{{ movie.title_en }}</p> -->
+            </td>
+        {% endfor %}
+    </tr>
+</table>
+<br>
+<br>
+
+{% endif %}
+
+{% if director_list %}
+<h2>{{ best_movie.title_ko }} 감독 "{{ best_movie.director }}"의 다른 영화</h2>
+<table class="row">
+    <tr>
+        <br>
+        {% for movie in director_list %}
+            <td>
+                <a class="row-image" href="{{ movie.link }}"><img src="{{  movie.poster }}" target='_blank' title="상세정보"></a>
+                <center><p>{{ movie.title_ko }}</p></center>
+                <!-- <p>{{ movie.title_en }}</p> -->
+            </td>
+        {% endfor %}
+    </tr>
+</table>
+<br>
+<br>
+{% endif %}
+
+{% if actor1_list %}
+
+<h2>{{ best_movie.title_ko}} 의 주연 "{{ actor1 }}"이 출연한 영화</h2>
+<table class="row">
+    <tr>
+        <br>
+        {% for movie in actor1_list %}
+            <td>
+                <a class="row-image" href="{{ movie.link }}"><img src="{{  movie.poster }}" target='_blank' title="상세정보"></a>
+                <center><p>{{ movie.title_ko }}</p></center>
+                <!-- <p>{{ movie.title_en }}</p> -->
+            </td>
+        {% endfor %}
+    </tr>
+</table>
+<br>
+<br>
+{% endif %}
+
+
+{% if actor2_list %}
+<h2>{{ best_movie.title_ko}} 의 주연 "{{ actor2 }}"이 출연한 영화</h2>
+<table class="row">
+    <tr>
+        <br>
+        {% for movie in actor2_list %}
+            <td>
+                <a class="row-image" href="{{ movie.link }}"><img src="{{  movie.poster }}" target='_blank' title="상세정보"></a>
+                <center><p>{{ movie.title_ko }}</p></center>
+                <!-- <p>{{ movie.title_en }}</p> -->
+            </td>
+        {% endfor %}
+    </tr>
+</table>
+<br>
+<br>
+{% endif %}
+
+{% if item_movie_list %}
+<h2>{{ best_movie.title_ko}} 재밌게 보셨다면! 이 영화 어때요?</h2>
+<table class="row">
+    <tr>
+        <br>
+        {% for movie in item_movie_list %}
+            <td>
+                <a class="row-image" href="{{ movie.link }}"><img src="{{  movie.poster }}" target='_blank' title="상세정보"></a>
+                <center><p>{{ movie.title_ko }}</p></center>
+                <!-- <p>{{ movie.title_en }}</p> -->
+            </td>
+        {% endfor %}
+    </tr>
+</table>
+<br>
+<br>
+{% endif %}
+
+{% endblock %}

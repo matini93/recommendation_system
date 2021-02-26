@@ -1,0 +1,32 @@
+<!Doctype html>
+
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <link href="../../static/css/style.css" type="text/css" rel="stylesheet">
+    <link rel = "preconnect"href = "https://fonts.gstatic.com">
+    <link href = "https://fonts.googleapis.com/css2? family = Noto + Sans + KR & display = swap" rel = "stylesheet">
+</head>
+<title>영화추천시스템</title>
+</head>
+<body>
+	<header>
+    <div class='top'>
+       <h1><a class="nav-link" href="{% url 'index' %}">홈으로</a>
+      </h1>
+      <h1><a class="nav-link" href="{% url 'recommend:worldcup' %}">이상형월드컵</a>
+      </h1>
+      <h1><a class="nav-link" href="{% url 'recommend:ratings' %}">평점매기기 </a></h1>
+
+    {% if user.is_authenticated %}
+      <h1><a href="{% url 'accounts:logout' %}">{{ user.username }}(로그아웃)</a></h1>
+    {% else %}
+      <h1><a href="{% url 'accounts:login' %}">  로그인</a>
+      </h1>
+      <h1><a href="{% url 'accounts:signup' %}">회원가입</a>
+      </h1>
+    {% endif %}
+    </div>
+  </header>
+</body>
+</html>

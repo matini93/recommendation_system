@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <link href="../../static/css/style.css" type="text/css" rel="stylesheet">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href = "https://fonts.googleapis.com/css2? family = Noto + Sans + KR & display = swap" rel = "stylesheet">
+    <title>평점매기기</title>
+</head>
+
+<body>
+<form action="ratings/" method='post'>
+    {% if rating_movie %}
+    <table class="row">
+        {% for movie in rating_movie %}
+        <tr>
+            <td><a class="row-image"><img src="{{  movie.poster }}"></a></td>
+            <td><td>&nbsp&nbsp<b><b>{{ movie.title_ko }}</td>
+            <td>
+                <div class="range-slider">
+                    <input type="range" class="range-slider__range" name='slider-{{ movie.movieId }}' value="0" min="0" max="5">
+                    <span class="range-slider__value" id ="{{ movie.movieId }}">0</span>
+                </div>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+    <input type='submit' value="제출하기">
+</form>
+</body>
+<script language="javascript">
+    var rangeSlider = function () {
+        var slider = $('.range-slider'),
+            range = $('.range-slider__range'),
+            value = $('.range-slider__value');
+
+        slider.each(function () {
+
+            value.each(function () {
+                var value = $(this).prev().attr('value');
+                $(this).html(value);
+            });
+
+            range.on('input', function () {
+                $(this).next(value).html(this.value);
+            });
+        });
+    };
+    rangeSlider();
+
+</script>
+<footer class="bottom">copyright ⓒ 멋쟁이사자처림 final project 무비판</footer>
